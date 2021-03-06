@@ -1,0 +1,11 @@
+@* dougstats Template File *@
+@(table: Array[Array[String]])
+
+@main("dougstats table") {
+    @for(i <- 0 to table.length)  {
+      @for(j <- 0 to table(i).length){
+        <li> @table(j) </li>
+      }
+        
+    }
+}
