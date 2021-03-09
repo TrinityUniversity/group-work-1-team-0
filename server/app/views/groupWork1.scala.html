@@ -1,0 +1,19 @@
+@* groupWork1 Template File *@
+
+@main("first page"){
+  <h2>Group Task 1</h2>
+  <form method="get" action="/print1">
+      Name:<input type="text" name="name"/>
+      <br>
+      Color:<input type="text" name="color" />
+      <br>
+      <input type="submit"></input>
+  </form>
+
+  <form method="post" action="@routes.Test.basicGW2()">
+    Username:<input type="text" name="name"/>
+    <br>
+    <input type="submit"></input>
+</form>
+
+}

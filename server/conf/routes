@@ -7,6 +7,10 @@ GET        /                             controllers.Application.index
 GET        /test                         controllers.Test.test
 GET        /testList                     controllers.Test.testList
 GET        /dougstats                    controllers.Test.dougstats
+GET        /groupWork1                   controllers.Test.groupWork1
+GET        /print1                       controllers.Test.basicGW1(color,name)
++ nocsrf
+POST       /print2                       controllers.Test.basicGW2
 
 # Prefix must match `play.assets.urlPrefix`
 GET        /assets/*file                 controllers.Assets.at(file)

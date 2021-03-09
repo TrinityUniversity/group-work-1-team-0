@@ -1,6 +1,9 @@
 package controllers
 
 import javax.inject._
+import play.api.data._
+import play.api.data.Forms._
+import play.api.data.validation.Constraints._
 
 import play.api.mvc._
 
@@ -50,6 +53,21 @@ val table2 = """1 embiid,joel        C 30 33.1  285  548 .520  37   90 .411  298
 val table3 = table2.map(s => s.split("\\s+"))
 def dougstats = Action {
     Ok(views.html.dougstats(table3))
+}
+
+def groupWork1 = Action{
+    Ok(views.html.groupWork1())
+}
+
+def basicGW1(color:String, name:String) = Action {
+    Ok(views.html.favoritecolor(color, name))
+}
+def basicGW2() = Action { request =>
+    val answer= request.body.asFormUrlEncoded
+    answer.map { value =>
+      var name = value("name").head
+      Ok(views.html.test(name))
+    }.getOrElse(Ok("error"))
 }
 
 }
