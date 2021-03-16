@@ -4,6 +4,7 @@ import javax.inject._
 import play.api.data._
 import play.api.data.Forms._
 import play.api.data.validation.Constraints._
+import models.GroupWorkModel
 
 import play.api.mvc._
 
@@ -65,8 +66,12 @@ def basicGW1(color:String, name:String) = Action {
 def basicGW2() = Action { request =>
     val answer= request.body.asFormUrlEncoded
     answer.map { value =>
-      var name = value("name").head
-      Ok(views.html.test(name))
+        var name = value("name").head
+        if(GroupWorkModel.validateUser(name))
+            Ok(views.html.test(name))
+        else
+            Redirect("/groupWork1")
+    
     }.getOrElse(Ok("error"))
 }
 
