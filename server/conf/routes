@@ -11,6 +11,8 @@ GET        /groupWork1                   controllers.Test.groupWork1
 GET        /print1                       controllers.Test.basicGW1(color,name)
 + nocsrf
 POST       /print2                       controllers.Test.basicGW2
+GET        /login                        controllers.Test.login
+GET        /logout1                      controllers.Test.logout
 
 # Prefix must match `play.assets.urlPrefix`
 GET        /assets/*file                 controllers.Assets.at(file)

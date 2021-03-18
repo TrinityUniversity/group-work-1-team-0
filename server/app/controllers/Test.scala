@@ -67,12 +67,20 @@ def basicGW2() = Action { request =>
     val answer= request.body.asFormUrlEncoded
     answer.map { value =>
         var name = value("name").head
-        if(GroupWorkModel.validateUser(name))
-            Ok(views.html.test(name))
-        else
-            Redirect("/groupWork1")
+        Redirect("/login").withSession("name" -> name)
     
     }.getOrElse(Ok("error"))
+}
+
+def login() = Action { request =>
+    val nameOption = request.session.get("name")
+    nameOption.map { name =>
+      val exists = GroupWorkModel.validateUser(name)
+      Ok(views.html.test(name))
+    }.getOrElse(Redirect("/groupWork1"))
+} 
+def logout() = Action {
+    Redirect("/groupWork1").withNewSession
 }
 
 }
